@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<h3>List as of <%= time %></h3>
+<ul>
+    <% watchlist.forEach(function(t) { %>
+        <li>
+          <form 
+            action="/watchlist/<%= t.id %>?_method=DELETE"
+            class="delete-form" 
+            method="POST">
+            <button type="submit">X</button>
+          </form>
+      
+          <a href="/watchlist/<%= t.id %>"><%= t.watchlist %></a>
+            - <%= t.done ? "done" : "not done" %>
+        </li>
+    <% }) %>
+</ul>
+<a href="/watchlist/new">Add a Movie</a>
+<%- include('../partials/footer') %>
